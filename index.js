@@ -61,7 +61,7 @@ var year = elementDate.getFullYear() //Year: 2013
 var hours = elementDate.getHours();
 var mins = elementDate.getMinutes();
 var lDateValue = (day.toString() + monthDesc[monthNo].toString() + " " + year.toString() + " " + hours.toString() + ":" + mins.toString());
-console.log(lDateValue);
+// console.log(lDateValue);
 
 //Login page
 app.get("/", (req, res) => {
