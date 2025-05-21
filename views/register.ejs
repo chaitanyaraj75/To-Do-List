@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/loginstyle.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h2>Create an Account</h2>
+      <form action="/register" method="POST">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" name="name" id="name" required placeholder="Enter your name">
+        </div>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="username" name="username" id="username" required placeholder="Enter a unique username">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" required placeholder="Enter a password">
+        </div>
+        <!-- <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" name="confirmPassword" id="confirmPassword" required placeholder="Confirm your password">
+        </div> -->
+        <button type="submit" class="btn primary">Register</button>
+      </form>
+
+      <div class="divider"><span>OR</span></div>
+
+      <!-- <a href="/auth/google" class="btn google">
+        <img src="https://www.svgrepo.com/show/355037/google.svg" alt="Google logo">
+        Register with Google
+      </a> -->
+
+      <p class="register-link">
+        Already have an account?
+        <a href="/login">Login here</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>
