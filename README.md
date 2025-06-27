@@ -20,33 +20,9 @@ This project is a multi-user To-Do List, where multiple users can securely acces
 - Mobile-Friendly & Responsive UI
 
 
-## Deployment
+## Live Demo
 
-To deploy this project run
-Clone the repository
-
-```bash
-  git clone <repository-url>
-```
-
-Navigate to the project directory:
-
-```bash
-  cd project-folder
-```
-
-Install dependencies
-
-```bash
-  npm install
-```
-
-Run the project:
-```bash
-  node index.js
-```
-
-Open in browser: http://localhost:3000
+**Live Demo:** [to-do-list-production-2454.up.railway.app](https://to-do-list-production-2454.up.railway.app)
 
 
 ## Future Improvements

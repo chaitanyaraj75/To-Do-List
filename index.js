@@ -5,6 +5,8 @@ import session from "express-session";
 import passport from "passport";
 import { Strategy } from "passport-local";
 import env from "dotenv";
+import pgSession from 'connect-pg-simple';
+const pgStore = pgSession(session);
 
 env.config();
 // const PG_USER = process.env.PG_USER;
@@ -19,12 +21,13 @@ const port = process.env.PORT || 3000;
 
 app.use(
   session({
+    store: new pgStore({
+      pool: db,
+    }),
     secret: "TOPSECRET",
     resave: false,
-    saveUninitialized: true,
-    cookie:{
-      maxAge: 1000*60
-    }
+    saveUninitialized: false,
+    cookie: { maxAge: 1000 * 60 * 60 }
   })
 );
 
