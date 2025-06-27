@@ -19,6 +19,13 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 
+const db = new pg.Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
+});
+
+db.connect();
+
 app.use(
   session({
     store: new pgStore({
@@ -42,12 +49,6 @@ app.use(passport.session());
 //   port: process.env.PG_PORT,
 // });
 
-const db = new pg.Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
-});
-
-db.connect();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
