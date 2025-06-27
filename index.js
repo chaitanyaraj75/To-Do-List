@@ -14,7 +14,8 @@ env.config();
 // const PG_PORT = process.env.PG_PORT;
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
+
 
 app.use(
   session({
@@ -30,13 +31,19 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+// const db = new pg.Client({
+//   user: process.env.PG_USER,
+//   host: process.env.PG_HOST,
+//   database: process.env.PG_DATABASE,
+//   password: process.env.PG_PASSWORD,
+//   port: process.env.PG_PORT,
+// });
+
 const db = new pg.Client({
-  user: process.env.PG_USER,
-  host: process.env.PG_HOST,
-  database: process.env.PG_DATABASE,
-  password: process.env.PG_PASSWORD,
-  port: process.env.PG_PORT,
+  connectionString: process.env.DATABASE_URL,
+  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
 });
+
 db.connect();
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -48,28 +55,6 @@ let items = [];
 var user = "chaitu";
 var name = "Chaitanya";
 
-let elementDate = new Date();
-var day = elementDate.getDate(); //Date of the month: 2 in our example
-var monthNo = elementDate.getMonth(); //Month of the Year: 0-based index, so 1 in our example
-var monthDesc = {
-  '0': 'January',
-  '1': 'February',
-  '2': 'March',
-  '3': 'April',
-  '4': 'May',
-  '5': 'June',
-  '6': 'July',
-  '7': 'August',
-  '8': 'September',
-  '9': 'October',
-  '10': 'November',
-  '11': 'December',
-}
-var year = elementDate.getFullYear() //Year: 2013
-var hours = elementDate.getHours();
-var mins = elementDate.getMinutes();
-var lDateValue = (day.toString() + monthDesc[monthNo].toString() + " " + year.toString() + " " + hours.toString() + ":" + mins.toString());
-// console.log(lDateValue);
 
 //Login page
 app.get("/", (req, res) => {
